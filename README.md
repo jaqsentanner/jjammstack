@@ -14,7 +14,6 @@ Project 3 - Group D -
 * Heroku
 * Semantic UI
 * CSS Grid
-* Moment.js
 
 ## Features
 
