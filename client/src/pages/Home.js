@@ -1,88 +1,49 @@
-import React, { useContext, useState, useEffect } from "react";
-import {
-  Grid,
-  Transition,
-  Dimmer,
-  Loader,
-  Image,
-  Segment,
-} from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
-import Fade from "react-reveal/Fade";
+import React from 'react';
+import ThoughtList from '../components/ThoughtList';
+import ThoughtForm from '../components/ThoughtForm';
+import FriendList from '../components/FriendList';
 
-import UserList from "../src/Components/UserList";
-import PostCard from "../src/Components/PostCard";
-import PostForm from "../src/Components/PostForm";
-import { FETCH_POSTS_QUERY } from "../Util/graphql";
-import { AuthContext } from "../Context/auth";
+import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 
-function Home() {
-  const { user } = useContext(AuthContext);
+const Home = () => {
+  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const thoughts = data?.thoughts || [];
 
-  const { loading, data: { getPosts: posts } = {} } = useQuery(
-    FETCH_POSTS_QUERY,
-    {
-      variables: {
-        user,
-      },
-    }
-  );
-
-  const [isDesktop, setIsDesktop] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-      setIsDesktop(false);
-    }
-  }, []);
-
-  const LoadingSegment = (
-    <Segment style={{ margin: "auto" }}>
-      <Dimmer active inverted>
-        <Loader inverted>Loading</Loader>
-      </Dimmer>
-      <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-    </Segment>
-  );
-
-  const postsStatus = loading ? (
-    LoadingSegment
-  ) : (
-    <Transition.Group duration={500}>
-      {posts &&
-        posts.map((post) => (
-          <Grid.Column key={post.id}>
-            <PostCard post={post} />
-          </Grid.Column>
-        ))}
-    </Transition.Group>
-  );
+  const loggedIn = Auth.loggedIn();
 
   return (
-    <Fade big={isDesktop} cascade={isMobile}>
-      <Grid
-        columns={isDesktop ? 3 : isMobile ? 1 : 0}
-        style={{
-          marginBottom: "3rem",
-          transition: " all 0.5s ease-in",
-        }}
-      >
-        <Grid.Row style={{ placeContent: "center" }}>
-          <UserList />
-        </Grid.Row>
-        <Grid.Row className="page-home-title">
-          {user && <PostForm />}
-          <h1>Recent Posts</h1>
-        </Grid.Row>
-        {posts && postsStatus}
-      </Grid>
-    </Fade>
+    <main>
+      <div className="flex-row justify-space-between">
+        {loggedIn && (
+          <div className="col-12 mb-3">
+            <ThoughtForm />
+          </div>
+        )}
+        <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ThoughtList
+              thoughts={thoughts}
+              title="Some Feed for Thought(s)..."
+            />
+          )}
+        </div>
+        {loggedIn && userData ? (
+          <div className="col-12 col-lg-3 mb-3">
+            <FriendList
+              username={userData.me.username}
+              friendCount={userData.me.friendCount}
+              friends={userData.me.friends}
+            />
+          </div>
+        ) : null}
+      </div>
+    </main>
   );
-}
+};
 
 export default Home;
