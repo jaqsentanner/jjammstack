@@ -6,16 +6,16 @@ import ReactionForm from '../components/ReactionForm';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHT } from '../utils/queries';
+import { QUERY_POST } from '../utils/queries';
 
-const SingleThought = (props) => {
-  const { id: thoughtId } = useParams();
+const SinglePost = (props) => {
+  const { id: postId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_THOUGHT, {
-    variables: { id: thoughtId },
+  const { loading, data } = useQuery(QUERY_POST, {
+    variables: { id: postId },
   });
 
-  const thought = data?.thought || {};
+  const POST = data?.post || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -26,22 +26,22 @@ const SingleThought = (props) => {
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
-            {thought.username}
+            {post.username}
           </span>{' '}
-          thought on {thought.createdAt}
+          Write a post {post.createdAt}
         </p>
         <div className="card-body">
-          <p>{thought.thoughtText}</p>
+          <p>{post.postText}</p>
         </div>
       </div>
 
-      {thought.reactionCount > 0 && (
-        <ReactionList reactions={thought.reactions} />
+      {post.reactionCount > 0 && (
+        <ReactionList reactions={post.reactions} />
       )}
 
-      {Auth.loggedIn() && <ReactionForm thoughtId={thought._id} />}
+      {Auth.loggedIn() && <ReactionForm postId={post._id} />}
     </div>
   );
 };
 
-export default SingleThought;
+export default SinglePost;
