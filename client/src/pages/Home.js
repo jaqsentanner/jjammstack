@@ -10,7 +10,7 @@ import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const { data: userData } = useQuery(QUERY_ME_BASIC);
-  const thoughts = data?.thoughts || [];
+  const posts = data?.posts || [];
 
   const loggedIn = Auth.loggedIn();
 
