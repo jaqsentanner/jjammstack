@@ -48,7 +48,7 @@ const Login = (props) => {
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
-                placeholder="Your email"
+                placeholder="Enter Your Email"
                 name="email"
                 type="email"
                 id="email"
@@ -57,7 +57,7 @@ const Login = (props) => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="Enter Your Password"
                 name="password"
                 type="password"
                 id="password"
@@ -69,7 +69,7 @@ const Login = (props) => {
               </button>
             </form>
 
-            {error && <div>Login failed</div>}
+            {error && <div className='text-center'>😕Login Failed😕</div>}
           </div>
         </div>
       </div>
