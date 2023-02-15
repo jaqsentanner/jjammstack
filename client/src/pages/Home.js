@@ -27,8 +27,8 @@ const Home = () => {
             <div>Loading...</div>
           ) : (
             <PostList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+              posts={posts}
+              title="Some Feed for Post(s)..."
             />
           )}
         </div>

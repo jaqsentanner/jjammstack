@@ -4,12 +4,12 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
-const ThoughtForm = () => {
-  const [thoughtText, setText] = useState('');
+const PostForm = () => {
+  const [postText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addThought } }) {
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
       
       // could potentially not exist yet, so wrap in a try/catch
     try {
@@ -17,17 +17,18 @@ const ThoughtForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+        data: { me: { ...me, posts: [...me.posts, addPost] } },
       });
     } catch (e) {
-      console.warn("First thought insertion by user!")
+      console.warn("First post insertion by user!")
     }
 
-    // update thought array's cache
-    const { thoughts } = cache.readQuery({ query: QUERY_POSTS });
+    // update post array's cache
+    const { posts } = cache.readQuery({ query: QUERY_POSTS });
     cache.writeQuery({
       query: QUERY_POSTS,
-      data: { thoughts: [addThought, ...thoughts] },
+      data: { posts: [addPost, ...posts] },
+
     });
   }
 })
@@ -45,8 +46,8 @@ const ThoughtForm = () => {
     event.preventDefault();
 
     try {
-      await addThought({
-        variables: { thoughtText },
+      await addPost({
+        variables: { postText },
       });
 
       // clear form value
@@ -70,8 +71,8 @@ const ThoughtForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Here's a new thought..."
-          value={thoughtText}
+          placeholder="Here's a new post..."
+          value={postText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
@@ -83,4 +84,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default PostForm;
