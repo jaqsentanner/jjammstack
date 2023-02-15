@@ -14,8 +14,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
-import DeleteButton from './components/DeleteButton';
-import LikeButton from './components/LikeButton';
+// import DeleteButton from './components/DeleteButton/Delete.Button.js';
+// import LikeButton from './components/LikeButton';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
@@ -66,7 +66,7 @@ function App() {
               </Route>
               <Route
                 path="/thought/:id"
-                element={<SingleThought />}
+                element={<SinglePost />}
               />
               <Route
                 path="*"

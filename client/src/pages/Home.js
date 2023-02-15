@@ -1,6 +1,6 @@
 import React from 'react';
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import PostList from '../components/PostList';
+import PostForm from '../components/PostForm';
 import FriendList from '../components/FriendList';
 
 import Auth from '../utils/auth';
@@ -19,14 +19,14 @@ const Home = () => {
       <div className="flex-row justify-space-between">
         {loggedIn && (
           <div className="col-12 mb-3">
-            <ThoughtForm />
+            <PostForm />
           </div>
         )}
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
+            <PostList
               thoughts={thoughts}
               title="Some Feed for Thought(s)..."
             />
