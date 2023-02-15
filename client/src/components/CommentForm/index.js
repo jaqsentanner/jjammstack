@@ -3,13 +3,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
-<<<<<<< HEAD:client/src/components/ReactionForm/index.js
-const ReactionForm = ({ postId }) => {
-  const [reactionBody, setBody] = useState('');
-=======
 const CommentForm = ({ postId }) => {
   const [commentBody, setBody] = useState('');
->>>>>>> main:client/src/components/CommentForm/index.js
   const [characterCount, setCharacterCount] = useState(0);
   const [addcomment, { error }] = useMutation(ADD_COMMENT);
 
@@ -26,13 +21,8 @@ const CommentForm = ({ postId }) => {
     event.preventDefault();
 
     try {
-<<<<<<< HEAD:client/src/components/ReactionForm/index.js
-      await addReaction({
-        variables: { reactionBody, postId },
-=======
       await addcomment({
         variables: { commentBody, postId },
->>>>>>> main:client/src/components/CommentForm/index.js
       });
 
       // clear form value
@@ -56,13 +46,8 @@ const CommentForm = ({ postId }) => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-<<<<<<< HEAD:client/src/components/ReactionForm/index.js
-          placeholder="Leave a reaction to this post.."
-          value={reactionBody}
-=======
           placeholder="Leave a comment to this post..."
           value={commentBody}
->>>>>>> main:client/src/components/CommentForm/index.js
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
