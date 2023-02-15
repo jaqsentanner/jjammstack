@@ -13,21 +13,44 @@ const Header = () => {
     <header className="bg-secondary mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
-          <h1>JJAMMSTACK Social Media</h1>
+          <h1>JJAMMs(T)ack</h1> 
         </Link>
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">Me</Link>
+            <>          <button
+            type="button"
+            className=""><a href="#_" class="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span class="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+            <span class="relative text-white"><Link to="/profile">Click to logout</Link></span>
+            </span>
+            </a>
+          </button><br></br>
+              {/* <Link to="/profile">Me</Link> */}
               <a href="/" onClick={logout}>
-                Logout
+
               </a>
             </>
           ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+            <><button
+            type="button"
+            className=""><a href="#_" class="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span class="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+            <span class="relative text-white"><Link to="/login">Login</Link></span>
+            </span>
+            </a>
+          </button>
+          <button
+            type="button"
+            className=""><a href="#_" class="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span class="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+            <span class="relative text-white"><Link to="/Signup">Sign Up</Link></span>
+            </span>
+            </a>
+          </button>
             </>
           )}
         </nav>
