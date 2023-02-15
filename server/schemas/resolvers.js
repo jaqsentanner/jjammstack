@@ -32,7 +32,7 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
-    Post: async (parent, { _id }) => {
+    post: async (parent, { _id }) => {
       return Post.findOne({ _id });
     }
   },
@@ -62,15 +62,8 @@ const resolvers = {
     },
     addPost: async (parent, args, context) => {
       if (context.user) {
-        const Post = await Post.create({ ...args, username: context.user.username });
-
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { posts: Post._id } },
-          { new: true }
-        );
-
-        return Post;
+      const newPost = await Post.create({ ...args, username: context.user.username });
+        return newPost;
       }
 
       throw new AuthenticationError('You need to be logged in!');
