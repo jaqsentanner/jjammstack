@@ -72,7 +72,7 @@ const PostForm = () => {
       >
         <textarea
           placeholder="Here's a new thought..."
-          value={thoughtText}
+          value={postText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
