@@ -6,12 +6,12 @@ import ReactionForm from '../components/ReactionForm';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHT } from '../utils/queries';
+import { QUERY_POST } from '../utils/queries';
 
 const SingleThought = (props) => {
   const { id: thoughtId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_POST, {
     variables: { id: thoughtId },
   });
 
