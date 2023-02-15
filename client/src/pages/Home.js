@@ -5,12 +5,12 @@ import FriendList from '../components/FriendList';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
+import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  const { loading, data } = useQuery(QUERY_POSTS);
   const { data: userData } = useQuery(QUERY_ME_BASIC);
-  const thoughts = data?.thoughts || [];
+  const posts = data?.posts || [];
 
   const loggedIn = Auth.loggedIn();
 
@@ -27,8 +27,8 @@ const Home = () => {
             <div>Loading...</div>
           ) : (
             <PostList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+              posts={posts}
+              title="Some Feed for Post(s)..."
             />
           )}
         </div>

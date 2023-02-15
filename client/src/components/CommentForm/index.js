@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_REACTION } from '../../utils/mutations';
+import { ADD_COMMENT } from '../../utils/mutations';
 
-const ReactionForm = ({ thoughtId }) => {
+<<<<<<< HEAD:client/src/components/ReactionForm/index.js
+const ReactionForm = ({ postId }) => {
   const [reactionBody, setBody] = useState('');
+=======
+const CommentForm = ({ postId }) => {
+  const [commentBody, setBody] = useState('');
+>>>>>>> main:client/src/components/CommentForm/index.js
   const [characterCount, setCharacterCount] = useState(0);
-  const [addReaction, { error }] = useMutation(ADD_REACTION);
+  const [addcomment, { error }] = useMutation(ADD_COMMENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -21,8 +26,13 @@ const ReactionForm = ({ thoughtId }) => {
     event.preventDefault();
 
     try {
+<<<<<<< HEAD:client/src/components/ReactionForm/index.js
       await addReaction({
-        variables: { reactionBody, thoughtId },
+        variables: { reactionBody, postId },
+=======
+      await addcomment({
+        variables: { commentBody, postId },
+>>>>>>> main:client/src/components/CommentForm/index.js
       });
 
       // clear form value
@@ -46,8 +56,13 @@ const ReactionForm = ({ thoughtId }) => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Leave a reaction to this thought..."
+<<<<<<< HEAD:client/src/components/ReactionForm/index.js
+          placeholder="Leave a reaction to this post.."
           value={reactionBody}
+=======
+          placeholder="Leave a comment to this post..."
+          value={commentBody}
+>>>>>>> main:client/src/components/CommentForm/index.js
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
@@ -62,4 +77,4 @@ const ReactionForm = ({ thoughtId }) => {
   );
 };
 
-export default ReactionForm;
+export default CommentForm;
