@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import ReactionList from '../components/ReactionList';
-import ReactionForm from '../components/ReactionForm';
+import CommentList from '../components/CommentList';
+import CommentForm from '../components/CommentForm';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -16,7 +16,7 @@ const SinglePost = (props) => {
 
   });
 
-  const POST = data?.post || {};
+  const post = data?.post || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -36,11 +36,11 @@ const SinglePost = (props) => {
         </div>
       </div>
 
-      {post.reactionCount > 0 && (
-        <ReactionList reactions={post.reactions} />
+      {post.commentCount > 0 && (
+        <CommentList comments={post.comments} />
       )}
 
-      {Auth.loggedIn() && <ReactionForm postId={post._id} />}
+      {Auth.loggedIn() && <CommentForm postId={post._id} />}
     </div>
   );
 };
