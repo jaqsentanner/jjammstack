@@ -28,6 +28,7 @@ const PostForm = () => {
     cache.writeQuery({
       query: QUERY_POSTS,
       data: { posts: [addPost, ...posts] },
+
     });
   }
 })
