@@ -35,7 +35,7 @@ const PostForm = () => {
 
   // update state based on form input changes
   const handleChange = (event) => {
-    if (event.target.value.length <= 280) {
+    if (event.target.value.length <= 300) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
@@ -61,24 +61,30 @@ const PostForm = () => {
   return (
     <div>
       <p
-        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+        className={`m-0 ${characterCount === 300 || error ? 'text-error' : ''}`}
       >
-        Character Count: {characterCount}/280
+        Character Count: {characterCount}/300
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
+        className="flex-row justify-center justify-space-between-md"
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Here's a new post..."
-          value={postText}
+          placeholder="Here's a new thought..."
+          value={thoughtText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
-        </button>
+<button
+            type="button"
+            className=""><a href="#_" class="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span class="relative px-20 py-7 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+            <span class="relative text-white">Submit</span>
+            </span>
+            </a>
+          </button>
       </form>
     </div>
   );

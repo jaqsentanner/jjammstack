@@ -8,7 +8,7 @@ const postSchema = new Schema(
       type: String,
       required: 'You need to leave a Post!',
       minlength: 1,
-      maxlength: 280
+      maxlength: 300
     },
     createdAt: {
       type: Date,

@@ -46,7 +46,7 @@ const Signup = () => {
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
-                placeholder="Your username"
+                placeholder="Enter Your username"
                 name="username"
                 type="username"
                 id="username"
@@ -55,7 +55,7 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="Your email"
+                placeholder="Enter Your email"
                 name="email"
                 type="email"
                 id="email"
@@ -76,7 +76,7 @@ const Signup = () => {
               </button>
             </form>
 
-            {error && <div>Signup failed</div>}
+            {error && <div>Sign Up failed</div>}
           </div>
         </div>
       </div>
