@@ -68,10 +68,10 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addcomment: async (parent, { PostId, commentBody }, context) => {
+    addComment: async (parent, { postId, commentBody }, context) => {
       if (context.user) {
         const updatedPost = await Post.findOneAndUpdate(
-          { _id: PostId },
+          { _id: postId },
           { $push: { comments: { commentBody, username: context.user.username } } },
           { new: true, runValidators: true }
         );
