@@ -6,7 +6,7 @@ import { ADD_COMMENT } from '../../utils/mutations';
 const CommentForm = ({ postId }) => {
   const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [addcomment, { error }] = useMutation(ADD_COMMENT);
+  const [addComment, { error }] = useMutation(ADD_COMMENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const CommentForm = ({ postId }) => {
     event.preventDefault();
 
     try {
-      await addcomment({
+      await addComment({
         variables: { commentBody, postId },
       });
 
