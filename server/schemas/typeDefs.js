@@ -12,7 +12,7 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
-    PostText: String
+    postText: String
     createdAt: String
     username: String
     commentCount: Int
