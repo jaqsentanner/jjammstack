@@ -35,6 +35,7 @@ const PostForm = () => {
 
   // update state based on form input changes
   const handleChange = (event) => {
+
     if (event.target.value.length <= 300) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
@@ -44,7 +45,7 @@ const PostForm = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(postText)
     try {
       await addPost({
         variables: { postText },
@@ -68,7 +69,7 @@ const PostForm = () => {
       </p>
       <form
         className="flex-row justify-center justify-space-between-md"
-        onSubmit={handleFormSubmit}
+        onClick={handleFormSubmit}
       >
         <textarea
           placeholder="Here's a new thought..."
