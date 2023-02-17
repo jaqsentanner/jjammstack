@@ -1,32 +1,33 @@
-# Team JJAMM s(T)ack
+# <u>Team JJAMMs(T)ack</u>
 Developed a social media app with MERNG (MongoDB & Express.js & React.js & Node.js & GraphQL). 
 
-This application implemented a GraphQL server that uses Node and Express to communicate to a MongoDB Database and fetch and persist data to a social media app back-end.
-# Tech Used
-MongoDB
-Express
-React (w/ React hooks API)
-Node.js
-Apollo
-GraphQL
-JSON Web Tokens
-Netlify
-Heroku
-Semantic UI
-CSS Grid
-Moment.js
+This application implemented a GraphQL server that uses Node and Express to communicate with a MongoDB Database to fetch and persist data into a social media app back-end.
 
-# Features
-Users can sign up
-Users can log in
-Users can create/delete/read posts
-Users can like and comment on posts
-Authentication middleware
-GraphQL server
-Single Page App (React)
-Production app deployed on Heroku
+# <u>Tech Used</u>
+    -MongoDB
+    -Express
+    -React (w/ React hooks API)
+    -Node.js
+    -Apollo
+    -GraphQL
+    -JSON Web Tokens
+    -Heroku
+    -Semantic UI
+    -CSS Grid
+    -Tailwind
+    -SendGrid
 
-In the project directory, you can run:
+# <u>Features</u>
+    -Users can sign up
+    -Users can log in
+    -Users can create/delete/read posts
+    -Users can like and comment on posts
+    -Authentication middleware
+    -GraphQL server
+    -Single Page App (React)
+    -Production app deployed on Heroku
+
+## <u>In the project directory, you can run:</u>
 
 ### `npm start`
 
@@ -56,8 +57,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 # Contributors:
-*** Developer: *** Jeffrey Fleischman *** Github: *** https://github.com/FleischmanJ88
-*** Developer: *** Malissa Adams *** Github: *** https://github.com/madams1972
-*** Developer: *** Jaqsen Meyer *** Github: *** https://github.com/jaqsentanner
-*** Developer: *** Tanner Kothlow *** Github:*** https://github.com/tannerkothlow
-*** Developer: *** Matt Hanson *** Github:*** https://github.com/matth747
+    ♠ Developer: Jeffrey Fleischman ♠ Github: https://github.com/FleischmanJ88
+    ♠ Developer: Malissa Adams      ♠ Github: https://github.com/madams1972
+    ♠ Developer: Jaqsen Meyer       ♠ Github: https://github.com/jaqsentanner
+    ♠ Developer: Tanner Kothlow     ♠ Github: https://github.com/tannerkothlow
+    ♠ Developer: Matt Hanson        ♠ Github: https://github.com/matth747
