@@ -54,6 +54,12 @@ export const ADD_COMMENT = gql`
   }
 `;
 
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($commentId: ID!) {
+  
+  }
+`;
+
 export const ADD_FRIEND = gql`
   mutation addFriend($id: ID!) {
     addFriend(friendId: $id) {
