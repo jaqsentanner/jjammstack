@@ -28,7 +28,7 @@ const Home = () => {
           ) : (
             <PostList
               posts={posts}
-              title="Some Feed for Post(s)..."
+              title="Latest Posts"
             />
           )}
         </div>

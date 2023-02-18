@@ -29,7 +29,7 @@ const SinglePost = (props) => {
           <span style={{ fontWeight: 700 }} className="text-light">
             {post.username}
           </span>{' '}
-          Write a post {post.createdAt}
+          wrote a post on<br></br>{post.createdAt}
         </p>
         <div className="card-body">
           <p>{post.postText}</p>
