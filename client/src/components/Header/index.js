@@ -20,41 +20,41 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>          <button
             type="button"
-            className=""><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            className=""><Link href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
             <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
             <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
             <span onClick={logout} className="relative text-white">Click to Logout</span>
             </span>
-            </a>
+            </Link>
           </button><br></br>
-              {/* <Link to="/profile">Me</Link> */}
+              <Link to="/profile">Me</Link> 
 
-              {/* <button onClick={logout}>
+              <button onClick={logout}>
                 Logout
-              </button> */}
+              </button> 
 
-              {/* <a href="Home" onClick={logout}>
+              <link href="Home" onClick={logout}>
 
-              </a> */}
+              </link> 
             </>
           ) : (
             <><button
             type="button"
-            className=""><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            className=""><Link href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
             <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
             <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
             <span className="relative text-white"><Link to="/login">Login</Link></span>
             </span>
-            </a>
+            </Link>
           </button>
           <button
             type="button"
-            className=""><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            className=""><Link href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
             <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
             <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
             <span className="relative text-white"><Link to="/Signup">Sign Up</Link></span>
             </span>
-            </a>
+            </Link>
           </button>
             </>
           )}
