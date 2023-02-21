@@ -81,6 +81,18 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+    editPost: async (parent, {postId, postText}, context) => {
+      if (context.user) {
+        const newPost = await Post.findOneAndUpdate(
+          
+            {_id: postId},
+            { postText: postText},
+            { new: true, runValidators: true }
+          );
+          return newPost
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
     // Delete button should only appear if logged in user username matches
     // comment username
     // OR: uptade to include the userID in commments
@@ -99,7 +111,7 @@ const resolvers = {
       if (context.user) {
         const deletedPost = await Post.findOneAndDelete(
           { _id: postId },
-          { $pull: { _id: postId }} ,
+
           { new: true, runValidators: true }
         );
 
