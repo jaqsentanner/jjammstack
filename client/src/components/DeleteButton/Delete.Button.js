@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
