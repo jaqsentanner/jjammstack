@@ -93,9 +93,21 @@ const resolvers = {
         return deletePost;
       }
 
-      throw new AuthenticationError('you need to be logged in!')
-    }
+      throw new AuthenticationError('You need to be logged in!')
+    },
+    removePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const deletedPost = await Post.findOneAndDelete(
+          { _id: postId },
+          { $pull: { _id: postId }} ,
+          { new: true, runValidators: true }
+        );
 
+        return deletedPost;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 
