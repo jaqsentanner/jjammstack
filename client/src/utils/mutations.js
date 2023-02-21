@@ -65,6 +65,20 @@ export const REMOVE_COMMENT = gql`
   }
 `;
 
+export const REMOVE_POST = gql`
+  mutation removePost($postId: ID!){
+    removePost(postId: $postId) {
+      _id
+      postText
+      createdAt
+      username
+      commentCount
+      comments {
+        _id 
+        }
+    }}
+`;
+
 export const ADD_FRIEND = gql`
   mutation addFriend($id: ID!) {
     addFriend(friendId: $id) {
