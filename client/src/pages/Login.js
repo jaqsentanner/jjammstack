@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
@@ -67,12 +66,12 @@ const Login = (props) => {
               />
               <div class ="flex flex-col justify-center items-center">
               <button className=" w-100" type="submit"
-            ><Link href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
             <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute "></span>
             <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
             <span className="relative text-white">Click to Login</span>
             </span>
-            </Link>
+            </a>
               </button>
               </div>
             </form>
