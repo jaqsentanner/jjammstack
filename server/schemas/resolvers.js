@@ -96,13 +96,15 @@ const resolvers = {
     // Delete button should only appear if logged in user username matches
     // comment username
     // OR: uptade to include the userID in commments
-    removeComment: async (parent, { commentId }, context) => {
+    removeComment: async (parent, { commentId, postId }, context) => {
       if (context.user) {
-        const deletePost = await Post.findOneAndDelete(
-          { _id: commentId }
+        const deleteComment = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $pull: { comments: {_id: commentId}}},
+          { new: true, runValidators: true }
         );
 
-        return deletePost;
+        return deleteComment;
       }
 
       throw new AuthenticationError('You need to be logged in!')
