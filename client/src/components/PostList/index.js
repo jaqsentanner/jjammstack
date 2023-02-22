@@ -1,13 +1,20 @@
 import React from 'react';
+import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 
 
 const PostList = ({ posts, title }) => {
+
+  let username = "";
+  const expired = Auth.isTokenExpired(Auth.getToken());
+  if (!expired) {
+    username = Auth.getUsername();
+  }
+  
   if (!posts.length) {
     return <a>No Posts Yet</a>;
-    
   }
-
+  console.log(username);
   return (
     <div>
       <h3>{title}</h3>
@@ -38,22 +45,29 @@ const PostList = ({ posts, title }) => {
             </span>
             </a>
           </button>
-          <button className="btn col-12 col-md-3" type="submit"
-            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-            <span className="relative px-6 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
-            <span className="relative text-white">🖉 Edit</span>
-            </span>
-            </a>
-          </button>
-          <button className="btn col-12 col-md-3" type="submit"
-            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-            <span className="relative px-6 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
-            <span className="relative text-white">🗑 Delete</span>
-            </span>
-            </a>
-          </button>
+          {/* Conditional button rendering */}
+          {username === post.username ? (
+            <div>
+              <button className="btn col-12 col-md-3" type="submit"
+                ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                <span className="relative px-6 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+                <span className="relative text-white">🖉 Edit</span>
+                </span>
+                </a>
+              </button>
+              <button className="btn col-12 col-md-3" type="submit"
+                ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                <span className="relative px-6 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+                <span className="relative text-white">🗑 Delete</span>
+                </span>
+                </a>
+              </button>
+            </div>
+          ) : (
+            <div></div>
+          )}
               </Link>
             </div>
           </div>
