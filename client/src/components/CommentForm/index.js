@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-
+import Auth from '../../utils/auth'
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, postUser }) => {
   const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addComment, { error }] = useMutation(ADD_COMMENT);
+
+  let username = "";
+  const expired = Auth.isTokenExpired(Auth.getToken());
+  if (!expired) {
+    username = Auth.getUsername();
+  }
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -61,22 +67,29 @@ const CommentForm = ({ postId }) => {
             </span>
             </a>
           </button>
-          <button className="btn col-12 col-md-3" type="submit"
-            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-            <span className="relative px-10 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
-            <span className="relative text-white">🖉 Edit</span>
-            </span>
-            </a>
-          </button>
-          <button className="btn col-12 col-md-3" type="submit"
-            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-            <span className="relative px-7 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
-            <span className="relative text-white">🗑 Delete</span>
-            </span>
-            </a>
-          </button>
+          {username === postUser ? (
+            <div>
+              <button className="btn col-12 col-md-3" type="submit"
+                ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                <span className="relative px-10 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+                <span className="relative text-white">🖉 Edit</span>
+                </span>
+                </a>
+              </button>
+              <button className="btn col-12 col-md-3" type="submit"
+                ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                <span className="relative px-7 py-flex transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+                <span className="relative text-white">🗑 Delete</span>
+                </span>
+                </a>
+              </button>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          
       </form>
 
       {error && <div>Something went wrong...</div>}

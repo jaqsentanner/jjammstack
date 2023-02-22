@@ -28,9 +28,11 @@ class AuthService {
   }
 
   getUsername() {
-    const decoded = decode(this.getToken);
-    if (decoded) {
-      return decoded.username;
+    try {
+      const decoded = decode(this.getToken());
+      return decoded.data.username;
+    } catch (err) {
+      return;
     }
   }
 
