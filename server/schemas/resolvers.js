@@ -42,6 +42,8 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
+      sendEmail(user.email, user.username);
+
       return { token, user };
     },
     login: async (parent, { email, password }) => {
