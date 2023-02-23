@@ -8,8 +8,8 @@ const CommentForm = ({ postId, postUser }) => {
   const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addComment, { error }] = useMutation(ADD_COMMENT);
-  const [deletePost, {err}] = useMutation(REMOVE_POST)
-  const [editPost, {er}] = useMutation(EDIT_POST)
+  const [deletePost, {err}] = useMutation(REMOVE_POST);
+  const [editPost, {er}] = useMutation(EDIT_POST);
 
   let username = "";
   const expired = Auth.isTokenExpired(Auth.getToken());
