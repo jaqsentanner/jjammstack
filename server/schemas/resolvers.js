@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
+const { sendEmail } = require('../utils/welcomeEmailSendGrid');
 
 const resolvers = {
   Query: {
@@ -41,6 +42,8 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
+
+      sendEmail(user.email, user.username);
 
       return { token, user };
     },
