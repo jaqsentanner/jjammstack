@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
+const { sendEmail } = require('../utils/welcomeEmailSendGrid');
 
 const resolvers = {
   Query: {
