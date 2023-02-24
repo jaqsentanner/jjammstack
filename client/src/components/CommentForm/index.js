@@ -33,7 +33,7 @@ const CommentForm = ({ postId, postUser }) => {
       await addComment({
         variables: { commentBody, postId },
       });
-      window.location.reload()
+
       // clear form value
       setBody('');
       setCharacterCount(0);
@@ -48,7 +48,7 @@ const CommentForm = ({ postId, postUser }) => {
       await deletePost({
         variables: { postId }
       });
-      window.location.reload()
+
 
     }  catch (e) {
       console.error(e);
@@ -61,7 +61,7 @@ const CommentForm = ({ postId, postUser }) => {
       await editPost({
         variables: { postId, postText }
       });
-      window.location.reload()
+
     } catch (e) {
       console.error(e);
     }
